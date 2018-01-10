@@ -1,0 +1,9 @@
+svg {
+  border:1px solid gray;
+}
+
+.chart-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

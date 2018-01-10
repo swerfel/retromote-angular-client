@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
+import { PostitComponent } from './postit/postit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChartComponent
+    ChartComponent,
+    PostitComponent
   ],
   imports: [
     BrowserModule
