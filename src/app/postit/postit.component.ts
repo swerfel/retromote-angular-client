@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dimension } from '../dimension';
+import { Position } from '../position';
 
 @Component({
   selector: '[app-postit]',
