@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { StickyNoteComponent } from './sticky-note/sticky-note.component';
 import { EditButtonComponent } from './edit-button/edit-button.component';
+import { EditableTextAreaComponent } from './editable-text-area/editable-text-area.component';
+import { ConfirmButtonComponent } from './confirm-button/confirm-button.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { EditButtonComponent } from './edit-button/edit-button.component';
     AppComponent,
     BoardComponent,
     StickyNoteComponent,
-    EditButtonComponent
+    EditButtonComponent,
+    EditableTextAreaComponent,
+    ConfirmButtonComponent
   ],
   imports: [
     BrowserModule

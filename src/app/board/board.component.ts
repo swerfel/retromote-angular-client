@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Dimension } from '../dimension';
 
@@ -7,15 +7,9 @@ import { Dimension } from '../dimension';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
   size: Dimension = {
     width: 1000,
     height: 600
   };
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

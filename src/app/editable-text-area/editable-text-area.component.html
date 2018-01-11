@@ -1,0 +1,4 @@
+<svg:foreignObject [attr.x]="elemX" [attr.y]="elemY" [attr.width]="elemWidth" [attr.height]="elemHeight">
+  <xhtml:p *ngIf="!editing">{{areaText}}</xhtml:p>
+  <xhtml:textarea *ngIf="editing">{{areaText}}</xhtml:textarea>
+</svg:foreignObject>

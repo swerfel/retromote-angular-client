@@ -5,11 +5,11 @@ import { EditableElement } from '../editable-element';
 let DEFAULT_SIZE = 32;
 
 @Component({
-  selector: '[app-edit-button]',
-  templateUrl: './edit-button.component.html',
-  styleUrls: ['./edit-button.component.css']
+  selector: '[app-confirm-button]',
+  templateUrl: './confirm-button.component.html',
+  styleUrls: ['./confirm-button.component.css']
 })
-export class EditButtonComponent extends BoardElement implements OnInit {
+export class ConfirmButtonComponent  extends BoardElement implements OnInit {
   @Input() editable: EditableElement;
   scale: number = 1;
   borderVisible: boolean = false;
@@ -31,7 +31,7 @@ export class EditButtonComponent extends BoardElement implements OnInit {
 
   @HostListener('click')
   onClick() {
-    this.editable.startEditing();
+    this.editable.confirmEdit();
   }
 
   min(a: number, b: number): number {
