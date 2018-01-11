@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostitComponent } from './postit.component';
+import { StickyNoteComponent } from './sticky-note.component';
 
-describe('PostitComponent', () => {
-  let component: PostitComponent;
-  let fixture: ComponentFixture<PostitComponent>;
+describe('StickyNoteComponent', () => {
+  let component: StickyNoteComponent;
+  let fixture: ComponentFixture<StickyNoteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostitComponent ]
+      declarations: [ StickyNoteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostitComponent);
+    fixture = TestBed.createComponent(StickyNoteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

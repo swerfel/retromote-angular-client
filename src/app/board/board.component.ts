@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Dimension } from '../dimension';
 
 @Component({
-  selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css']
+  selector: 'app-board',
+  templateUrl: './board.component.html',
+  styleUrls: ['./board.component.css']
 })
-export class ChartComponent implements OnInit {
+export class BoardComponent implements OnInit {
   size: Dimension = {
     width: 1000,
     height: 600

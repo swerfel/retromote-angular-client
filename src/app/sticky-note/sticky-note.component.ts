@@ -3,12 +3,12 @@ import { Dimension } from '../dimension';
 import { Position } from '../position';
 
 @Component({
-  selector: '[app-postit]',
-  templateUrl: './postit.component.html',
-  styleUrls: ['./postit.component.css']
+  selector: '[sticky-note]',
+  templateUrl: './sticky-note.component.html',
+  styleUrls: ['./sticky-note.component.css']
 })
-export class PostitComponent implements OnInit {
-  text: string = "PostIt text";
+export class StickyNoteComponent implements OnInit {
+  text: string = "Sticky note text";
   size: Dimension = {
     width: 150,
     height: 100

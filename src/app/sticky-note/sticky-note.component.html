@@ -1,0 +1,5 @@
+<svg:g [attr.transform]="'translate(' + location.x + ',' + location.y + ')'">
+  <svg:rect class="sticky-note" [attr.width]="size.width" [attr.height]="size.height"/>
+  <svg:text x="5" y="20" fill="black" font-family="Verdana" font-size="14">{{text}}</text>
+  <g app-edit-button [bottomLineY]="size.height"/>
+</svg:g>
