@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
+## Retromote Backlog
+- Edit the text of board elemens (stickies)
+- Share a board between multiple users
+- Move elemens on the board (stickies)
+- Stickies looks like real stickies
+- Add labels to the board (always behind the stickies)
+- Delete elements (stickies) from the board
+- Store stickies on a personal tray (not visible to others)
+- Change labels sizes
+- Change stickies colors
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
