@@ -14,6 +14,7 @@ import { TranslateToBoundsLocationDirective } from './bounds/translate-to-bounds
 import { SetScaleDirective } from './set-scale.directive';
 import { ButtonComponent } from './button/button.component';
 import { DiscardButtonComponent } from './discard-button/discard-button.component';
+import { DraggableComponent } from './draggable/draggable.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { DiscardButtonComponent } from './discard-button/discard-button.componen
     TranslateToBoundsLocationDirective,
     SetScaleDirective,
     ButtonComponent,
-    DiscardButtonComponent
+    DiscardButtonComponent,
+    DraggableComponent
   ],
   imports: [
     BrowserModule,

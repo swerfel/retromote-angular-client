@@ -7,7 +7,11 @@ export abstract class TransformManipulator {
   addToTransform(val: string) {
     let oldValue = this.el.nativeElement.getAttribute('transform');
     let newValue = this.appendTo(oldValue, val);
-    this.renderer.setAttribute(this.el.nativeElement, 'transform', newValue);
+    this.setTransform(newValue);
+  }
+
+  setTransform(val: string) {
+    this.renderer.setAttribute(this.el.nativeElement, 'transform', val);
   }
 
   appendTo(appendTo: string, toAppend: string): string {

@@ -3,7 +3,6 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
 ## Retromote Backlog
-- Edit the text of board elemens (stickies)
 - Share a board between multiple users
 - Move elemens on the board (stickies)
 - Stickies looks like real stickies
