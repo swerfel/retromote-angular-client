@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Bounds } from '../bounds/bounds';
 import { EditableElement } from '../editable-element'
 
@@ -9,12 +9,11 @@ import { EditableElement } from '../editable-element'
 })
 export class EditableTextAreaComponent implements EditableElement {
   @Input() areaText: string = '';
+  @Output() areaTextChange: EventEmitter<string> = new EventEmitter();
   @Input() editing: boolean = false;
   @Input() bounds: Bounds;
-  editText: string = ''
 
   startEditing(){
-    this.editText = this.areaText;
     this.editing = true
   }
 
@@ -23,7 +22,7 @@ export class EditableTextAreaComponent implements EditableElement {
   }
 
   confirmEdit(){
-    this.areaText = this.editText;
+    this.areaTextChange.emit(this.areaText);
     this.editing = false;
   }
 
