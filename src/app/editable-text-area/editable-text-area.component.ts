@@ -12,8 +12,10 @@ export class EditableTextAreaComponent implements EditableElement {
   @Output() areaTextChange: EventEmitter<string> = new EventEmitter();
   @Input() editing: boolean = false;
   @Input() bounds: Bounds;
+  editText: string;
 
   startEditing(){
+    this.editText = this.areaText;
     this.editing = true;
   }
 
@@ -22,6 +24,7 @@ export class EditableTextAreaComponent implements EditableElement {
   }
 
   confirmEdit(){
+    this.areaText = this.editText;
     this.areaTextChange.emit(this.areaText);
     this.editing = false;
   }

@@ -1,5 +1,4 @@
-import { Component, Input, HostListener } from '@angular/core';
-import { EditableElement } from '../editable-element';
+import { Component } from '@angular/core';
 
 @Component({
   selector: '[app-edit-button]',
@@ -7,6 +6,4 @@ import { EditableElement } from '../editable-element';
   styleUrls: ['./edit-button.component.css']
 })
 export class EditButtonComponent {
-  @Input() editable: EditableElement;
-
 }
