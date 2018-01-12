@@ -14,7 +14,7 @@ export class EditableTextAreaComponent implements EditableElement {
   @Input() bounds: Bounds;
 
   startEditing(){
-    this.editing = true
+    this.editing = true;
   }
 
   discardEdit(){

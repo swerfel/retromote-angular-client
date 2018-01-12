@@ -12,6 +12,7 @@ import { ConfirmButtonComponent } from './confirm-button/confirm-button.componen
 import { ApplyBoundsDirective } from './bounds/apply-bounds.directive';
 import { TranslateToBoundsLocationDirective } from './bounds/translate-to-bounds-location.directive';
 import { SetScaleDirective } from './set-scale.directive';
+import { ButtonComponent } from './button/button.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SetScaleDirective } from './set-scale.directive';
     ConfirmButtonComponent,
     ApplyBoundsDirective,
     TranslateToBoundsLocationDirective,
-    SetScaleDirective
+    SetScaleDirective,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
