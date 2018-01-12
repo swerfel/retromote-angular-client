@@ -8,6 +8,9 @@ import { StickyNoteComponent } from './sticky-note/sticky-note.component';
 import { EditButtonComponent } from './edit-button/edit-button.component';
 import { EditableTextAreaComponent } from './editable-text-area/editable-text-area.component';
 import { ConfirmButtonComponent } from './confirm-button/confirm-button.component';
+import { ApplyBoundsDirective } from './bounds/apply-bounds.directive';
+import { TranslateToBoundsLocationDirective } from './bounds/translate-to-bounds-location.directive';
+import { SetScaleDirective } from './set-scale.directive';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { ConfirmButtonComponent } from './confirm-button/confirm-button.componen
     StickyNoteComponent,
     EditButtonComponent,
     EditableTextAreaComponent,
-    ConfirmButtonComponent
+    ConfirmButtonComponent,
+    ApplyBoundsDirective,
+    TranslateToBoundsLocationDirective,
+    SetScaleDirective
   ],
   imports: [
     BrowserModule

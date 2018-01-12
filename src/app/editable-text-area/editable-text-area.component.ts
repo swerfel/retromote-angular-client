@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BoardElement } from '../board-element';
+import { Bounds } from '../bounds/bounds';
 import { EditableElement } from '../editable-element'
 
 @Component({
@@ -7,9 +7,10 @@ import { EditableElement } from '../editable-element'
   templateUrl: './editable-text-area.component.html',
   styleUrls: ['./editable-text-area.component.css']
 })
-export class EditableTextAreaComponent extends BoardElement implements EditableElement {
+export class EditableTextAreaComponent implements EditableElement {
   @Input() areaText: string = '';
   @Input() editing: boolean = false;
+  @Input() bounds: Bounds;
   editText: string = ''
 
   startEditing(){

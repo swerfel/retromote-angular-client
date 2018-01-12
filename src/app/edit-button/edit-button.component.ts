@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { BoardElement } from '../board-element'
+import { Bounds } from '../bounds/bounds'
 import { EditableElement } from '../editable-element';
 
 let DEFAULT_SIZE = 32;
@@ -9,13 +9,14 @@ let DEFAULT_SIZE = 32;
   templateUrl: './edit-button.component.html',
   styleUrls: ['./edit-button.component.css']
 })
-export class EditButtonComponent extends BoardElement implements OnInit {
+export class EditButtonComponent implements OnInit {
   @Input() editable: EditableElement;
+  @Input() bounds: Bounds;
   scale: number = 1;
   borderVisible: boolean = false;
 
   ngOnInit() {
-    let currentSize = this.min(this.elemWidth, this.elemHeight) ;
+    let currentSize = this.min(this.bounds.width, this.bounds.height) ;
     this.scale = currentSize / DEFAULT_SIZE;
   }
 

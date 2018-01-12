@@ -1,8 +1,8 @@
-<svg:g [attr.transform]="'translate(' + elemX + ',' + elemY + ')'">
-  <svg:rect class="sticky-note" [attr.width]="elemWidth" [attr.height]="elemHeight"/>
+<svg:g [appTranslateToBoundsLocation]="bounds">
+  <svg:rect class="sticky-note" [attr.width]="bounds.width" [attr.height]="bounds.height"/>
   <!--<svg:text x="5" y="20" fill="black" font-family="Verdana" font-size="14">{{text}}</text>-->
-  <g app-editable-text-area elemX="5" elemY="5" [elemWidth]="elemWidth-10" [elemHeight]="elemHeight-10-24" [areaText]="text" #editableText/>
-  <g app-edit-button *ngIf="!editableText.isEditing()" [elemWidth]="24" [elemHeight]="24" [elemX]="5" [elemY]="elemHeight-5-24" [editable]="editableText"/>
-  <g app-confirm-button *ngIf="editableText.isEditing()" [elemWidth]="24" [elemHeight]="24" [elemX]="5" [elemY]="elemHeight-5-24" [editable]="editableText"/>
+  <g app-editable-text-area [bounds]="{x: 5, y: 5, width: bounds.width - 10, height: bounds.height - 10 -24}" [areaText]="text" #editableText/>
+  <g app-edit-button *ngIf="!editableText.isEditing()" [bounds]="{x: 5, y: bounds.height - 5 - 24, height: 24, width: 24}" [editable]="editableText"/>
+  <g app-confirm-button *ngIf="editableText.isEditing()" [bounds]="{x: 5, y: bounds.height - 5 - 24, height: 24, width: 24}" [editable]="editableText"/>
 
 </svg:g>
