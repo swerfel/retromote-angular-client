@@ -1,10 +1,15 @@
-export abstract class Bounds {
-  static EMPTY: Bounds = {
-    x: 0, y: 0, width: 0, height: 0
-  }
+import { PositionChange } from '../position-change';
 
-  x: number;
-  y: number;
-  width: number;
-  height: number;
+export class Bounds {
+  static EMPTY: Bounds = new Bounds(0, 0, 0, 0);
+
+  constructor(
+    public x: number,
+    public y: number,
+    public width: number,
+    public height: number) {}
+
+  public movedBy(change: PositionChange): Bounds {
+    return new Bounds(this.x + change.dx, this.y + change.dy, this.width, this.height);
+  }
 }

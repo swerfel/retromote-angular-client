@@ -1,20 +1,21 @@
-<svg:g [appTranslateToBoundsLocation]="bounds">
-  <svg:rect class="sticky-note" [attr.width]="bounds.width" [attr.height]="bounds.height"/>
-  <!--<svg:text x="5" y="20" fill="black" font-family="Verdana" font-size="14">{{text}}</text>-->
-  <g app-editable-text-area [bounds]="{x: 5, y: 5, width: bounds.width - 10, height: bounds.height - 10 -24}" [(areaText)]="text" #editableText/>
+<svg:g app-draggable [drag-enabled]="!editableText.isEditing()" (positionChanged)="locationChanged($event)">
+  <g [appTranslateToBoundsLocation]="bounds">
+    <svg:rect class="sticky-note" [attr.width]="bounds.width" [attr.height]="bounds.height"/>
+    <!--<svg:text x="5" y="20" fill="black" font-family="Verdana" font-size="14">{{text}}</text>-->
+    <g app-editable-text-area [bounds]="{x: 5, y: 5, width: bounds.width - 10, height: bounds.height - 10 -24}" [(areaText)]="text" #editableText/>
 
-  <g *ngIf="!editableText.isEditing()">
-    <g app-button [bounds]="{x: 5, y: bounds.height - 5 - 24, height: 24, width: 24}" (click)="editableText.startEditing()">
-      <g app-edit-button/>
+    <g *ngIf="!editableText.isEditing()">
+      <g app-button [bounds]="{x: 5, y: bounds.height - 5 - 24, height: 24, width: 24}" (click)="editableText.startEditing()">
+        <g app-edit-button/>
+      </g>
+    </g>
+    <g *ngIf="editableText.isEditing()">
+      <g app-button [bounds]="{x: 5, y: bounds.height - 5 - 24, height: 24, width: 24}" (click)="editableText.discardEdit()">
+        <g app-discard-button/>
+      </g>
+      <g app-button [bounds]="{x: 5+24+5, y: bounds.height - 5 - 24, height: 24, width: 24}" (click)="editableText.confirmEdit()">
+        <g app-confirm-button/>
+      </g>
     </g>
   </g>
-  <g *ngIf="editableText.isEditing()">
-    <g app-button [bounds]="{x: 5, y: bounds.height - 5 - 24, height: 24, width: 24}" (click)="editableText.discardEdit()">
-      <g app-discard-button/>
-    </g>
-    <g app-button [bounds]="{x: 5+24+5, y: bounds.height - 5 - 24, height: 24, width: 24}" (click)="editableText.confirmEdit()">
-      <g app-confirm-button/>
-    </g>
-  </g>
-
 </svg:g>

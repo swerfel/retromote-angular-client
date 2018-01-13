@@ -1,5 +1,7 @@
-import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
+import { PositionChange } from '../position-change';
 import { TransformManipulator } from '../transform-manipulator';
+
 
 @Component({
   selector: '[app-draggable]',
@@ -7,39 +9,54 @@ import { TransformManipulator } from '../transform-manipulator';
   styleUrls: ['./draggable.component.css']
 })
 export class DraggableComponent extends TransformManipulator {
-
-  isDrag: boolean = false;
+  isDrag = false;
   startX: number;
   startY: number
+  @Input('drag-enabled') dragEnabled: boolean;
+  @Output() positionChanged = new EventEmitter<PositionChange>();
 
-  constructor(el: ElementRef, renderer: Renderer2) {
-    super(el, renderer);
+  constructor(private elRef: ElementRef, renderer: Renderer2) {
+    super(elRef, renderer);
   }
 
   @HostListener('mousedown', ['$event'])
   onMouseDown(event: MouseEvent){
-    this.isDrag = true;
-    this.startX = event.screenX;
-    this.startY = event.screenY;
-    console.log('start: '+this.startX+', '+this.startY);
-    // TODO avoid movement if in edit mode
+    this.preventDefaultDragAndDrop(event);
+    if (this.dragEnabled) {
+      this.isDrag = true;
+      this.startX = event.screenX;
+      this.startY = event.screenY;
+    }
+  }
+
+  preventDefaultDragAndDrop(event: MouseEvent) {
+    if (event.preventDefault)
+      event.preventDefault();
+    else
+      event.returnValue = false;
   }
 
   @HostListener('window:mouseup', ['$event'])
   onMouseUp(event: MouseEvent){
-    this.isDrag = false;
-    // TODO: Check whether release was over the element, to make a drop or to cancel the drag
-    super.setTransform('');
+    if (this.isDrag) {
+      this.isDrag = false;
+      super.setTransform('');
+      let change = this.computeChangeDimension(event);
+      this.positionChanged.emit(change);
+    }
   }
 
   @HostListener('window:mousemove', ['$event'])
   onMouseMove(event: MouseEvent){
     if (this.isDrag) {
-      let dx = event.screenX - this.startX;
-      let dy = event.screenY - this.startY;
+      let change = this.computeChangeDimension(event);
       // TODO if outside the bounds move back inside the board
-      super.setTransform('translate(' + dx + ',' + dy + ')');
+      super.setTransform(change.toTranslateString());
     }
+  }
+
+  computeChangeDimension(event: MouseEvent): PositionChange {
+    return new PositionChange(event.screenX - this.startX, event.screenY - this.startY);
   }
 
 }

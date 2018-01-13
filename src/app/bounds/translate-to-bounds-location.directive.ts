@@ -11,7 +11,7 @@ export class TranslateToBoundsLocationDirective extends TransformManipulator{
   }
 
   @Input() set appTranslateToBoundsLocation(bounds: Bounds) {
-    super.addToTransform('translate(' + bounds.x + ',' + bounds.y + ')');
+    super.setTransform('translate(' + bounds.x + ',' + bounds.y + ')');
   }
 
 }
