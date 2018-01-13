@@ -8,7 +8,7 @@ import { PositionChange } from '../position-change';
   styleUrls: ['./sticky-note.component.css']
 })
 export class StickyNoteComponent {
-  text: string = "Some very long sticky note text, that hopefully requires some line breaks";
+  @Input() text: string = '';
   @Input() bounds: Bounds;
 
   locationChanged(change: PositionChange) {
