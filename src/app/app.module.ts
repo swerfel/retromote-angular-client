@@ -15,6 +15,7 @@ import { SetScaleDirective } from './set-scale.directive';
 import { ButtonComponent } from './button/button.component';
 import { DiscardButtonComponent } from './discard-button/discard-button.component';
 import { DraggableComponent } from './draggable/draggable.component';
+import { SvgTransformerService } from './svg-transformer.service';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { DraggableComponent } from './draggable/draggable.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ SvgTransformerService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

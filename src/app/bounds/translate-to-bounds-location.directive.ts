@@ -1,17 +1,15 @@
 import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
 import { Bounds } from './bounds';
-import { TransformManipulator } from '../transform-manipulator';
+import { SvgTransformerService } from '../svg-transformer.service';
 
 @Directive({
   selector: '[appTranslateToBoundsLocation]'
 })
-export class TranslateToBoundsLocationDirective extends TransformManipulator{
-  constructor(el: ElementRef, renderer: Renderer2) {
-    super(el, renderer);
-  }
+export class TranslateToBoundsLocationDirective{
+  constructor(private el: ElementRef, private transformer: SvgTransformerService) {}
 
   @Input() set appTranslateToBoundsLocation(bounds: Bounds) {
-    super.setTransform('translate(' + bounds.x + ',' + bounds.y + ')');
+    this.transformer.setTranslate(this.el, bounds.x, bounds.y); 
   }
 
 }

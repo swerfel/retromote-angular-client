@@ -1,16 +1,13 @@
 import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
-import { TransformManipulator } from './transform-manipulator';
+import { SvgTransformerService } from './svg-transformer.service';
 
 @Directive({
   selector: '[appSetScale]'
 })
-export class SetScaleDirective extends TransformManipulator{
-  constructor(el: ElementRef, renderer: Renderer2) {
-    super(el, renderer);
-  }
+export class SetScaleDirective{
+  constructor(private el: ElementRef, private transformer: SvgTransformerService) {}
 
   @Input() set appSetScale(scale: number) {
-    super.addToTransform('scale(' + scale + ',' + scale + ')');
+    this.transformer.setScale(this.el, scale, scale);
   }
-
 }

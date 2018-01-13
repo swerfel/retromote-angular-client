@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
 import { PositionChange } from '../position-change';
-import { TransformManipulator } from '../transform-manipulator';
+import { SvgTransformerService } from '../svg-transformer.service';
 
 
 @Component({
@@ -8,16 +8,14 @@ import { TransformManipulator } from '../transform-manipulator';
   templateUrl: './draggable.component.html',
   styleUrls: ['./draggable.component.css']
 })
-export class DraggableComponent extends TransformManipulator {
+export class DraggableComponent {
   isDrag = false;
   startX: number;
   startY: number
   @Input('drag-enabled') dragEnabled: boolean;
   @Output() positionChanged = new EventEmitter<PositionChange>();
 
-  constructor(private elRef: ElementRef, renderer: Renderer2) {
-    super(elRef, renderer);
-  }
+  constructor(private el: ElementRef, private transformer: SvgTransformerService) {}
 
   @HostListener('mousedown', ['$event'])
   onMouseDown(event: MouseEvent){
@@ -40,7 +38,7 @@ export class DraggableComponent extends TransformManipulator {
   onMouseUp(event: MouseEvent){
     if (this.isDrag) {
       this.isDrag = false;
-      super.setTransform('');
+      this.transformer.clearTranslate(this.el);
       let change = this.computeChangeDimension(event);
       this.positionChanged.emit(change);
     }
@@ -51,7 +49,7 @@ export class DraggableComponent extends TransformManipulator {
     if (this.isDrag) {
       let change = this.computeChangeDimension(event);
       // TODO if outside the bounds move back inside the board
-      super.setTransform(change.toTranslateString());
+      this.transformer.setTranslateTo(this.el, change);
     }
   }
 

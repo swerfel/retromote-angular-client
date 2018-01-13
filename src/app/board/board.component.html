@@ -1,9 +1,5 @@
 <div class="board-container" [style.width.px]="size.width" [style.height.px]="size.height">
   <svg [attr.width]="size.width" [attr.height]="size.height">
-      <svg:g
-        *ngFor="let sticky of stickies;"
-        app-sticky-note
-        [bounds]="sticky.bounds"
-        [text]="sticky.text"/>
+      <svg:g *ngFor="let sticky of stickies;" app-sticky-note [sticky]="sticky"/>
   </svg>
 </div>

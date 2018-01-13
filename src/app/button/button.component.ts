@@ -28,11 +28,6 @@ export class ButtonComponent implements OnInit {
     this.borderVisible = false;
   }
 
-  @HostListener('click')
-  onClickHandler() {
-    console.log('clicked');
-  }
-
   min(a: number, b: number): number {
     return a < b ? a : b;
   }
