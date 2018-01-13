@@ -21,8 +21,8 @@ export class DraggableComponent extends TransformManipulator {
 
   @HostListener('mousedown', ['$event'])
   onMouseDown(event: MouseEvent){
-    this.preventDefaultDragAndDrop(event);
     if (this.dragEnabled) {
+      this.preventDefaultDragAndDrop(event);
       this.isDrag = true;
       this.startX = event.screenX;
       this.startY = event.screenY;

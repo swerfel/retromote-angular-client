@@ -4,7 +4,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Retromote Backlog
 - Share a board between multiple users
-- Move elemens on the board (stickies)
 - Stickies looks like real stickies
 - Add labels to the board (always behind the stickies)
 - Delete elements (stickies) from the board
