@@ -1,21 +1,34 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2,  OnInit, OnDestroy } from '@angular/core';
 import { PositionChange } from '../position-change';
 import { SvgTransformerService } from '../svg-transformer.service';
+import { PositionService } from '../position.service'
 
 
 @Component({
   selector: '[app-draggable]',
   templateUrl: './draggable.component.html',
-  styleUrls: ['./draggable.component.css']
+  styleUrls: ['./draggable.component.css'],
+  providers: [PositionService]
 })
-export class DraggableComponent {
+export class DraggableComponent implements OnInit, OnDestroy {
   isDrag = false;
   startX: number;
-  startY: number
+  startY: number;
+  connection;
   @Input('drag-enabled') dragEnabled: boolean;
   @Output() positionChanged = new EventEmitter<PositionChange>();
 
-  constructor(private el: ElementRef, private transformer: SvgTransformerService) {}
+  constructor(private el: ElementRef, private transformer: SvgTransformerService, private positions: PositionService) {}
+
+  ngOnInit() {
+    this.connection = this.positions.positionChanges().subscribe((positionChange: PositionChange) => {
+      this.positionChanged.emit(positionChange);
+    });
+  }
+
+  ngOnDestroy() {
+    this.connection.unsubscribe();
+}
 
   @HostListener('mousedown', ['$event'])
   onMouseDown(event: MouseEvent){
@@ -41,6 +54,7 @@ export class DraggableComponent {
       this.transformer.clearTranslate(this.el);
       let change = this.computeChangeDimension(event);
       this.positionChanged.emit(change);
+      this.positions.positionChanged(change);
     }
   }
 
