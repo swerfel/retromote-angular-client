@@ -1,10 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { BoardComponent } from './board/board.component';
+import { DraggableComponent } from './draggable/draggable.component';
+import { StickyNoteComponent } from './sticky-note/sticky-note.component';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        BoardComponent,
+        DraggableComponent,
+        StickyNoteComponent
       ],
     }).compileComponents();
   }));
