@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditableTextAreaComponent } from './editable-text-area.component';
+import { ApplyBoundsDirective } from '../bounds/apply-bounds.directive';
+import { FormsModule } from '@angular/forms'
 
 describe('EditableTextAreaComponent', () => {
   let component: EditableTextAreaComponent;
@@ -8,7 +10,12 @@ describe('EditableTextAreaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditableTextAreaComponent ]
+      declarations: [
+        EditableTextAreaComponent,
+        ApplyBoundsDirective
+      ],
+      imports: [
+      ],
     })
     .compileComponents();
   }));

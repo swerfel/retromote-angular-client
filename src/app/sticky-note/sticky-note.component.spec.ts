@@ -1,6 +1,11 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StickyNoteComponent } from './sticky-note.component';
+import { DraggableComponent } from '../draggable/draggable.component';
+import { SvgTransformerService } from '../svg-transformer.service';
+import { TranslateToBoundsLocationDirective } from '../bounds/translate-to-bounds-location.directive';
 
 describe('StickyNoteComponent', () => {
   let component: StickyNoteComponent;
@@ -8,7 +13,13 @@ describe('StickyNoteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StickyNoteComponent ]
+      declarations: [
+        StickyNoteComponent,
+        DraggableComponent,
+        TranslateToBoundsLocationDirective
+      ],
+      providers: [ SvgTransformerService ],
+     schemas: [ NO_ERRORS_SCHEMA ] // TODO find a way to test without that
     })
     .compileComponents();
   }));
