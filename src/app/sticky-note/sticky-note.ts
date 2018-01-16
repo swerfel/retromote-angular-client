@@ -1,5 +1,5 @@
 import { Bounds } from '../bounds/bounds';
-import { PositionChange } from '../position-change';
+import { PositionChange } from '../transformation/position-change';
 import { Draggable } from '../draggable/draggable';
 
 export class StickyNote implements Draggable {

@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
-import { Bounds } from './bounds';
-import { SvgTransformerService } from '../svg-transformer.service';
+import { Bounds } from '../bounds/bounds';
+import { SvgTransformerService } from './svg-transformer.service';
 
 @Directive({
   selector: '[appTranslateToBoundsLocation]'

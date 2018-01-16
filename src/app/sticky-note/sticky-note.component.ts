@@ -1,7 +1,7 @@
 import { Component, Input} from '@angular/core';
 import { Bounds } from '../bounds/bounds';
 import { StickyNote } from './sticky-note';
-import { PositionChange } from '../position-change';
+import { PositionChange } from '../transformation/position-change'; 
 
 @Component({
   selector: '[app-sticky-note]',

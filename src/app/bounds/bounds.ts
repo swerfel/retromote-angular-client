@@ -1,4 +1,4 @@
-import { PositionChange } from '../position-change';
+import { PositionChange } from '../transformation/position-change';
 
 export class Bounds {
   static EMPTY: Bounds = new Bounds(0, 0, 0, 0);

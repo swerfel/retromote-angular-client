@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { PositionChange } from './position-change';
+import { PositionChange } from './transformation/position-change';
 import { PositionChangeMessage } from './position-change-message'
-import { IdGenerator } from './id-generator';
+import { IdGenerator } from './util/id-generator';
 import * as io from 'socket.io-client';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Bounds } from '../bounds/bounds';
-import { IdGenerator } from '../id-generator';
+import { IdGenerator } from '../util/id-generator';
 import { StickyNote } from './sticky-note';
 
 @Injectable()

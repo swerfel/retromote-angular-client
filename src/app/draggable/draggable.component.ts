@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2,  OnInit, OnDestroy } from '@angular/core';
 import { Draggable } from './draggable';
-import { PositionChange } from '../position-change';
-import { SvgTransformerService } from '../svg-transformer.service';
+import { PositionChange } from '../transformation/position-change';
+import { SvgTransformerService } from '../transformation/svg-transformer.service';
 import { PositionService } from '../position.service'
 
 
