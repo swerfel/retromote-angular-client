@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2,  OnInit, OnDestroy } from '@angular/core';
+import { Draggable } from './draggable';
 import { PositionChange } from '../position-change';
 import { SvgTransformerService } from '../svg-transformer.service';
 import { PositionService } from '../position.service'
@@ -17,6 +18,7 @@ export class DraggableComponent implements OnInit, OnDestroy {
   connection;
   @Input('drag-enabled') dragEnabled: boolean;
   @Output() positionChanged = new EventEmitter<PositionChange>();
+  @Input('draggabe-element') draggableElement: Draggable;
 
   constructor(private el: ElementRef, private transformer: SvgTransformerService, private positions: PositionService) {}
 
@@ -37,6 +39,7 @@ export class DraggableComponent implements OnInit, OnDestroy {
       this.isDrag = true;
       this.startX = event.screenX;
       this.startY = event.screenY;
+      this.draggableElement.onDragStart();
     }
   }
 
@@ -55,6 +58,7 @@ export class DraggableComponent implements OnInit, OnDestroy {
       let change = this.computeChangeDimension(event);
       this.positionChanged.emit(change);
       this.positions.positionChanged(change);
+      this.draggableElement.onDragFinish();
     }
   }
 
@@ -64,6 +68,7 @@ export class DraggableComponent implements OnInit, OnDestroy {
       let change = this.computeChangeDimension(event);
       // TODO if outside the bounds move back inside the board
       this.transformer.setTranslateTo(this.el, change);
+      this.draggableElement.onDragLocationChange();
     }
   }
 

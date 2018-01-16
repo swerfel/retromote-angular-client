@@ -18,14 +18,18 @@ export class ButtonComponent implements OnInit {
     this.scale = currentSize / DEFAULT_SIZE;
   }
 
-  @HostListener('mouseenter')
-  onMouseEnter() {
-    this.borderVisible = true;
+  @HostListener('mouseenter', ['$event'])
+  onMouseEnter(event: MouseEvent) {
+    this.borderVisible = this.noButtonsPressed(event);
   }
 
   @HostListener('mouseleave')
   onMouseLeave() {
     this.borderVisible = false;
+  }
+
+  noButtonsPressed(event: MouseEvent): boolean {
+    return event.buttons === 0;
   }
 
   min(a: number, b: number): number {

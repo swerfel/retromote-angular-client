@@ -1,4 +1,7 @@
-<svg:g app-draggable [drag-enabled]="!editableText.isEditing()" (positionChanged)="locationChanged($event)">
+<svg:g app-draggable
+    [drag-enabled]="!editableText.isEditing()"
+    (positionChanged)="locationChanged($event)"
+    [draggabe-element]="sticky">
   <g [appTranslateToBoundsLocation]="sticky.bounds">
     <svg:rect class="sticky-note" [attr.width]="sticky.bounds.width" [attr.height]="sticky.bounds.height"/>
     <!--<svg:text x="5" y="20" fill="black" font-family="Verdana" font-size="14">{{text}}</text>-->
