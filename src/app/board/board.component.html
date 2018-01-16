@@ -1,5 +1,11 @@
 <div class="board-container" [style.width.px]="size.width" [style.height.px]="size.height">
   <svg [attr.width]="size.width" [attr.height]="size.height">
       <svg:g *ngFor="let sticky of stickies;" app-sticky-note [sticky]="sticky"/>
+
+      <g app-button
+          [bounds]="buttonBoundsByIndex(0)"
+          (click)="newSticky()">
+        <g app-add-sticky-button/>
+      </g>
   </svg>
 </div>

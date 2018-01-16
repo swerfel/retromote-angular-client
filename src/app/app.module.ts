@@ -16,6 +16,7 @@ import { ButtonComponent } from './button/button.component';
 import { DiscardButtonComponent } from './discard-button/discard-button.component';
 import { DraggableComponent } from './draggable/draggable.component';
 import { SvgTransformerService } from './svg-transformer.service';
+import { AddStickyButtonComponent } from './add-sticky-button/add-sticky-button.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SvgTransformerService } from './svg-transformer.service';
     SetScaleDirective,
     ButtonComponent,
     DiscardButtonComponent,
-    DraggableComponent
+    DraggableComponent,
+    AddStickyButtonComponent
   ],
   imports: [
     BrowserModule,
