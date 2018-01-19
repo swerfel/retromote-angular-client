@@ -3,13 +3,17 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
 ## Retromote Backlog
-- Share a board between multiple users
 - Stickies looks like real stickies
 - Add labels to the board (always behind the stickies)
 - Delete elements (stickies) from the board
 - Store stickies on a personal tray (not visible to others)
 - Change labels sizes
 - Change stickies colors
+
+- visualized remote dragged elements
+- find reaction, if user tries to move a sticky, while editing an outher one
+- find reaction, if someone tries to edit a sticky, that is moved by someone else
+- make drag messages volatile
 
 ## Development server
 

@@ -28,18 +28,20 @@ function onError(error) {
   }
 }
 
+function rebroadcastEvent(socket, eventName) {
+  socket.on(eventName, (message) => {
+    console.log('broadcasting for '+eventName+': '+JSON.stringify(message));
+    socket.broadcast.emit(eventName, message);
+  });
+
+}
+
 function onConnection(socket){
+  const rebroadcastEvents = ['stickyNewAdded', 'stickyTextChanged', 'stickyMoved', 'stickyToFront', 'stickyDragged']
   console.log('user connected');
   socket.on('disconnect', function(){ console.log('user disconnected'); });
-  socket.on('positionChange', (change) => {
-    console.log('broadcasting: '+JSON.stringify(change));
-    io.emit('positionChanged', change);
-  });
-  socket.on('ping', (data) => {
-    console.log('Received message from client: ' + data);
-    socket.broadcast.emit('ping', data)
-  });
   socket.on('error', onError);
+  rebroadcastEvents.forEach(e => rebroadcastEvent(socket, e));
 }
 
 io.on('connection', onConnection);
