@@ -7,12 +7,13 @@ import { IdGenerator } from '../util/id-generator';
 
 @Injectable()
 export class ConnectionService {
-  private url = 'http://localhost:3000';
+  private url = 'https://powerful-dusk-74006.herokuapp.com/';
   private clientId = IdGenerator.uuidv4();
   private socket;
 
   constructor() {
     this.socket = io(this.url);
+
     this.socket.on('connect', () => {
       console.log('connected to server with socket id: ' + this.socket.id);
     });
