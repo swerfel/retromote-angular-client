@@ -1,6 +1,7 @@
 # Retromote
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
+You can try it here: https://swerfel.github.io/retromote-angular-client/
 
 ## Retromote Backlog
 - Stickies looks like real stickies
