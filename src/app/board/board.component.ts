@@ -4,12 +4,15 @@ import { Dimension } from '../dimension';
 import { Observable } from 'rxjs/Observable';
 import { StickyNote } from '../sticky-note/sticky-note';
 import { StickiesService } from '../sticky-note/stickies.service';
+import { SocketIOStickiesService } from '../sticky-note/socket-io-stickies.service';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css'],
-  providers: [ StickiesService ]
+  providers: [
+    { provide: StickiesService, useClass: SocketIOStickiesService}
+  ]
 })
 export class BoardComponent {
   size: Dimension = {
@@ -19,7 +22,7 @@ export class BoardComponent {
   stickies: Array<StickyNote>;
 
   constructor(private stickiesService: StickiesService) {
-    this.stickies = stickiesService.stickies;
+    this.stickies = stickiesService.getStickies();
   }
 
  buttonBoundsByIndex(index: number): Bounds{

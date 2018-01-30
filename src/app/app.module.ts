@@ -16,7 +16,7 @@ import { ButtonComponent } from './button/button.component';
 import { DiscardButtonComponent } from './discard-button/discard-button.component';
 import { DraggableComponent } from './draggable/draggable.component';
 import { SvgTransformerService } from './transformation/svg-transformer.service';
-import { ConnectionService } from './synchronization/connection.service';
+import { SocketIOConnectionService } from './socket-io-synchronization/socket-io-connection.service';
 import { AddStickyButtonComponent } from './add-sticky-button/add-sticky-button.component';
 
 
@@ -42,7 +42,7 @@ import { AddStickyButtonComponent } from './add-sticky-button/add-sticky-button.
   ],
   providers: [
     SvgTransformerService,
-    ConnectionService
+    SocketIOConnectionService
   ],
   bootstrap: [AppComponent]
 })

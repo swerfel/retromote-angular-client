@@ -6,7 +6,7 @@ import * as io from 'socket.io-client';
 import { IdGenerator } from '../util/id-generator';
 
 @Injectable()
-export class ConnectionService {
+export class SocketIOConnectionService {
   private url = 'https://powerful-dusk-74006.herokuapp.com/';
   private clientId = IdGenerator.uuidv4();
   private socket;
