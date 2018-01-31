@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+
 import { Bounds } from '../bounds/bounds';
 import { Dimension } from '../dimension';
-import { Observable } from 'rxjs/Observable';
 import { StickyNote } from '../sticky-note/sticky-note';
 import { StickiesService } from '../sticky-note/stickies.service';
+import { FirebaseStickiesService } from '../sticky-note/firebase-stickies.service';
 import { SocketIOStickiesService } from '../sticky-note/socket-io-stickies.service';
 
 @Component({
@@ -14,15 +17,17 @@ import { SocketIOStickiesService } from '../sticky-note/socket-io-stickies.servi
     { provide: StickiesService, useClass: SocketIOStickiesService}
   ]
 })
-export class BoardComponent {
+export class BoardComponent  implements OnInit{
   size: Dimension = {
     width: 1000,
     height: 600
   };
-  stickies: Array<StickyNote>;
+  stickies: Array<StickyNote> = [];
 
-  constructor(private stickiesService: StickiesService) {
-    this.stickies = stickiesService.getStickies();
+  constructor(private stickiesService: StickiesService) {  }
+
+  ngOnInit(){
+    this.stickies = this.stickiesService.getStickies();
   }
 
  buttonBoundsByIndex(index: number): Bounds{

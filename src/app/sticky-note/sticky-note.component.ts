@@ -8,7 +8,7 @@ import { PositionChange } from '../transformation/position-change';
   templateUrl: './sticky-note.component.html',
   styleUrls: ['./sticky-note.component.css']
 })
-export class StickyNoteComponent {
+export class StickyNoteComponent{
   @Input() sticky: StickyNote;
 
   buttonBoundsByIndex(index: number){
