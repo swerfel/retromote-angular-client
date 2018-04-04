@@ -21,3 +21,5 @@ deploy:
   token:
     secure: $FIREBASE_API_KEY
   project: "retromote"
+  on:
+    branch: firebase-basis-implementation
