@@ -19,5 +19,5 @@ notifications:
 deploy:
   provider: firebase
   token:
-    secure: FIREBASE_API_KEY
+    secure: $FIREBASE_API_KEY
   project: "retromote"
