@@ -4,7 +4,7 @@ node_js:
    - node # will use latest node
 
 before_script: # commands to run before the build step
-   - ./scripts/setEnv.sh
+   - wget $CONFIG_URL --http-user=$CONFIG_UCER --http-pass=$CONFIG_PASS -o src/environment/environment.prod.ts
    - npm install -g --silent @angular/cli
 
 script: # the build step
