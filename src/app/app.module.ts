@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-//import { environment } from './../environments/environment';
+import { environment } from './../environments/environment';
 
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
@@ -43,8 +43,8 @@ import { AddStickyButtonComponent } from './add-sticky-button/add-sticky-button.
   imports: [
     BrowserModule,
     FormsModule,
-  //  AngularFireModule.initializeApp(environment.firebase),
-  //  AngularFireDatabaseModule
+  AngularFireModule.initializeApp(environment.firebase),
+  AngularFireDatabaseModule
   ],
   providers: [
     SvgTransformerService,

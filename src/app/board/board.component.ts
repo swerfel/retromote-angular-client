@@ -14,7 +14,7 @@ import { SocketIOStickiesService } from '../sticky-note/socket-io-stickies.servi
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css'],
   providers: [
-    { provide: StickiesService, useClass: SocketIOStickiesService}
+    { provide: StickiesService, useClass: FirebaseStickiesService}
   ]
 })
 export class BoardComponent  implements OnInit{

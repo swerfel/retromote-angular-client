@@ -6,11 +6,13 @@ import { StickiesService } from './stickies.service';
 import { StickyNote } from './sticky-note';
 import { Bounds } from '../bounds/bounds';
 import { PositionChange } from '../transformation/position-change';
+import { IdGenerator } from '../util/id-generator';
 
 export class FirebaseStickyNote {
   key: string;
   text: string;
   temporaryLocationOffset: PositionChange = new PositionChange(0,0);
+  draggedByClient: string;
   bounds: Bounds;
   order: number;
 }
@@ -20,11 +22,13 @@ export class FirebaseStickiesService extends StickiesService {
   private basePath: string = '/stickies/fSbA330TtjVZ-QdYAAAA';
   stickies: Array<StickyNote> = [];
   highestOrder = 0;
+  clientId: string;
 
   items: AngularFireList<FirebaseStickyNote> = null;
   constructor(private db: AngularFireDatabase) {
     super();
 
+    this.clientId = IdGenerator.uuidv4();
     this.items = this.getItemsList();
     this.items.snapshotChanges()
       .map(changes => {
@@ -49,6 +53,11 @@ export class FirebaseStickiesService extends StickiesService {
   }
 
   private fromFirebaseToLocal(fs: FirebaseStickyNote): StickyNote {
+    if (fs.draggedByClient === this.clientId) {
+      let localSticky = this.stickies.find(s => s.id === fs.key);
+      if (localSticky)
+        return localSticky;
+    }
     let bounds = new Bounds(fs.bounds.x, fs.bounds.y, fs.bounds.width, fs.bounds.height);
     let sticky = this.createSticky(fs.key, fs.text, bounds);
     sticky.temporaryLocationOffset.dx = fs.temporaryLocationOffset.dx;
@@ -82,7 +91,10 @@ export class FirebaseStickiesService extends StickiesService {
   }
 
   protected  onLocalDragged(s: StickyNote){
-    this.updateItem(s.id,{temporaryLocationOffset: s.temporaryLocationOffset});
+    this.updateItem(s.id,{
+      temporaryLocationOffset: s.temporaryLocationOffset,
+      draggedByClient: this.clientId
+    });
   }
 
   private getItemsList(): AngularFireList<FirebaseStickyNote> {
