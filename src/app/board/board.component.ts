@@ -7,7 +7,6 @@ import { Dimension } from '../dimension';
 import { StickyNote } from '../sticky-note/sticky-note';
 import { StickiesService } from '../sticky-note/stickies.service';
 import { FirebaseStickiesService } from '../sticky-note/firebase-stickies.service';
-import { SocketIOStickiesService } from '../sticky-note/socket-io-stickies.service';
 
 @Component({
   selector: 'app-board',
