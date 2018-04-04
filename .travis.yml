@@ -19,7 +19,7 @@ notifications:
 deploy:
   provider: firebase
   token:
-    secure: $FIREBASE_API_KEY
+    secure: $FIREBASE_DEPLOY_KEY
   project: "retromote"
   on:
     branch: firebase-basis-implementation
