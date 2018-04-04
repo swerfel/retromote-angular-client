@@ -4,21 +4,20 @@ node_js:
    - node # will use latest node
 
 before_script: # commands to run before the build step
+   - sed -ri "s/FIREBASE_API_KEY/$FIREBASE_API_KEY/" src/environments/environment.prod.ts
+   - sed -ri "s/FIREBASE_MESSAGING_SENDER_ID/$FIREBASE_MESSAGING_SENDER_ID/" src/environments/environment.prod.ts
    - npm install -g --silent @angular/cli
 
 script: # the build step
    - ng build --prod -base-href $BASE_HREF
 
 notifications:
-  email: # only receive email when the build status changes (someone broke the build!) 
+  email: # only receive email when the build status changes (someone broke the build!)
     on_failure: change
-    on_success: change 
+    on_success: change
 
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
-  keep-history: true
-  local-dir: dist
-  on:
-    branch: master
+  provider: firebase
+  token:
+    secure: FIREBASE_API_KEY
+  project: "retromote"
