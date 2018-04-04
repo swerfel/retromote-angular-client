@@ -85,7 +85,7 @@ export class FirebaseStickiesService extends StickiesService {
   protected  onLocalMoved(s: StickyNote){
     this.updateItem(s.id,{
       bounds: s.bounds,
-      draggedByClient: null;
+      draggedByClient: null
     });
   }
 
