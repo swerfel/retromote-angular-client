@@ -34,11 +34,7 @@ export class FirebaseStickiesService extends StickiesService {
       .map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
       })
-      .subscribe((stickies: FirebaseStickyNote[]) => {
-        console.log('new stickies arrived: '+stickies.length);
-        this.setStickies(stickies);
-        console.log('new: '+this.stickies.length);
-      })
+      .subscribe((s: FirebaseStickyNote[]) => this.setStickies(s))
   }
 
   public getStickies(): StickyNote[]{
