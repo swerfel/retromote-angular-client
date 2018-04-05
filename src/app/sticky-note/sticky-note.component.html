@@ -12,20 +12,20 @@
     <g *ngIf="!editableText.isEditing()">
       <g app-button
           [bounds]="buttonBoundsByIndex(0)"
-          (click)="editableText.startEditing()">
-        <g app-edit-button/>
+          (click)="editableText.startEditing()"
+          iconId="pencil">
       </g>
     </g>
     <g *ngIf="editableText.isEditing()">
       <g app-button
           [bounds]="buttonBoundsByIndex(0)"
-          (click)="editableText.discardEdit()">
-        <g app-discard-button/>
+          (click)="editableText.discardEdit()"
+          iconId="x">
       </g>
       <g app-button
           [bounds]="buttonBoundsByIndex(1)"
-          (click)="editableText.confirmEdit()">
-        <g app-confirm-button/>
+          (click)="editableText.confirmEdit()"
+          iconId="check">
       </g>
     </g>
   </g>

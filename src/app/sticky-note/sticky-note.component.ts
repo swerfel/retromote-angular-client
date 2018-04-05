@@ -13,7 +13,7 @@ export class StickyNoteComponent{
 
   buttonBoundsByIndex(index: number){
     let padding = 5;
-    let size = 24;
+    let size = 16;
     let x = padding + index * (size + padding);
     let y = this.sticky.bounds.height - size - padding;
     return new Bounds(x, y, size, size);

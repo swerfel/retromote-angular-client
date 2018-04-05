@@ -31,7 +31,7 @@ export class BoardComponent  implements OnInit{
 
  buttonBoundsByIndex(index: number): Bounds{
    let padding = 5;
-   let size = 32;
+   let size = 16;
    let x = padding;
    let y = padding + index * (size + padding);
    return new Bounds(x, y, size, size);

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Bounds } from '../bounds/bounds'
 
-let DEFAULT_SIZE = 32;
+let DEFAULT_SIZE = 24;
 
 @Component({
   selector: '[app-button]',
@@ -10,12 +10,10 @@ let DEFAULT_SIZE = 32;
 })
 export class ButtonComponent implements OnInit {
   @Input() bounds: Bounds;
-  scale: number = 1;
+  @Input() iconId: string;
   borderVisible: boolean = false;
 
   ngOnInit() {
-    let currentSize = this.min(this.bounds.width, this.bounds.height) ;
-    this.scale = currentSize / DEFAULT_SIZE;
   }
 
   @HostListener('mouseenter', ['$event'])
