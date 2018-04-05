@@ -23,4 +23,4 @@ deploy:
     secure: $FIREBASE_DEPLOY_KEY
   project: "retromote"
   on:
-    branch: firebase-basis-implementation
+    branch: master
