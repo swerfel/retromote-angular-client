@@ -1,0 +1,17 @@
+<div id="myModal" class="modal" [style.display]="settings.active?'block':'none'">
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" (click)="onDismiss()">&times;</span>
+      <h3>{{settings.title}}</h3>
+    </div>
+    <div class="modal-body">
+    <p>{{settings.text}}</p>
+    </div>
+    <div class="modal-footer">
+      <button (click)="onConfirm()">Ja</button>
+      <button (click)="onDismiss()">Nein</button>
+    </div>
+  </div>
+
+</div>

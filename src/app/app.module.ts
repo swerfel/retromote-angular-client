@@ -17,7 +17,8 @@ import { SetScaleDirective } from './transformation/set-scale.directive';
 import { ButtonComponent } from './button/button.component';
 import { DraggableComponent } from './draggable/draggable.component';
 import { SvgTransformerService } from './transformation/svg-transformer.service';
-import { SocketIOConnectionService } from './socket-io-synchronization/socket-io-connection.service';
+import { DialogComponent } from './dialog/dialog.component';
+import { DialogService } from './dialog/dialog.service';
 
 
 @NgModule({
@@ -31,16 +32,17 @@ import { SocketIOConnectionService } from './socket-io-synchronization/socket-io
     SetScaleDirective,
     ButtonComponent,
     DraggableComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-  AngularFireModule.initializeApp(environment.firebase),
-  AngularFireDatabaseModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [
     SvgTransformerService,
-    SocketIOConnectionService
+    DialogService
   ],
   bootstrap: [AppComponent]
 })

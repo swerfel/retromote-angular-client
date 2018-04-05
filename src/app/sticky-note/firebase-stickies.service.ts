@@ -46,6 +46,7 @@ export class FirebaseStickiesService extends StickiesService {
     let args: any[] = [0, mapped.length];
     Array.prototype.splice.apply(this.stickies, args.concat(mapped));
     this.highestOrder = Math.max(...firebaseStickies.map(s=>s.order));
+    console.log("stickies list updated. highest order: "+this.highestOrder);
   }
 
   private fromFirebaseToLocal(fs: FirebaseStickyNote): StickyNote {
@@ -65,7 +66,6 @@ export class FirebaseStickiesService extends StickiesService {
     console.log('creating new sticky');
     let i = this.stickies.length;
     let sticky = this.createNewSticky(i);
-    this.stickies.push(sticky);
 
     let s = new FirebaseStickyNote();
     s.text = sticky.text;
@@ -87,17 +87,20 @@ export class FirebaseStickiesService extends StickiesService {
   }
 
   protected  onLocalToFront(s: StickyNote){
-    this.updateItem(s.id,{order: this.highestOrder++});
+    this.updateItem(s.id,{
+      order: ++this.highestOrder,
+      draggedByClient: this.clientId
+   });
   }
 
   protected  onLocalDragged(s: StickyNote){
     this.updateItem(s.id,{
-      temporaryLocationOffset: s.temporaryLocationOffset,
-      draggedByClient: this.clientId
+      temporaryLocationOffset: s.temporaryLocationOffset
     });
   }
 
   protected onLocalDelete(s: StickyNote) {
+    console.log("deleting sticky with text: "+s.text)
     this.deleteItem(s.id);
   }
 
