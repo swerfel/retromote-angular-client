@@ -101,6 +101,10 @@ export class FirebaseStickiesService extends StickiesService {
     });
   }
 
+  protected onLocalDelete(s: StickyNote) {
+    this.deleteItem(s.id);
+  }
+
   private getItemsList(): AngularFireList<FirebaseStickyNote> {
     return this.db.list<FirebaseStickyNote>(this.basePath,
             ref => ref.orderByChild('order'));

@@ -19,6 +19,8 @@ export abstract class StickiesService {
 
   protected abstract onLocalDragged(s: StickyNote);
 
+  protected abstract onLocalDelete(s: StickyNote);
+
   protected createNewSticky(index: number): StickyNote {
     let id = IdGenerator.uuidv4();
     let text = 'Enter your text here ('+index+')';
@@ -32,6 +34,7 @@ export abstract class StickiesService {
     s.onDragged.subscribe((s:StickyNote) => this.onLocalDragged(s));
     s.onMoved.subscribe((s:StickyNote) => this.onLocalMoved(s));
     s.onTextChanged.subscribe((s:StickyNote) => this.onLocalTextChange(s));
+    s.onDeleted.subscribe((s:StickyNote) => this.onLocalDelete(s));
     return s;
   }
 }

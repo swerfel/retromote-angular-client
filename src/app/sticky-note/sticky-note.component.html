@@ -15,6 +15,11 @@
           (click)="editableText.startEditing()"
           iconId="pencil">
       </g>
+      <g app-button
+          [bounds]="buttonBoundsByIndex(1)"
+          (click)="sticky.onDelete()"
+          iconId="trash">
+      </g>
     </g>
     <g *ngIf="editableText.isEditing()">
       <g app-button

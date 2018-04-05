@@ -10,6 +10,7 @@ export class StickyNote implements Draggable {
   onMovedToFront = new Subject();
   onDragged = new Subject();
   onMoved = new Subject();
+  onDeleted = new Subject();
 
   onTextChanged = new Subject();
 
@@ -43,6 +44,10 @@ export class StickyNote implements Draggable {
     this.bounds = this.bounds.movedBy(change);
     this.temporaryLocationOffset.reset();
     this.onMoved.next(this);
+  }
+
+  onDelete(){
+    this.onDeleted.next(this);
   }
 
   silentMoveTo(x: number, y: number) {
