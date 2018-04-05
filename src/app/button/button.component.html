@@ -1,7 +1,7 @@
 <svg:g [appTranslateToBoundsLocation]="bounds">
-  <g>
+  <g  [appSetScale]="scale">
     <rect width="16" height="16" [style.stroke-opacity]="borderVisible?1:0" class="icon-border" />
-    <g transform="scale(2,2)">
+    <g transform="translate(1,1) scale(1.75,1.75)">
       <use attr.href="{{'assets/open-iconic.svg#' + iconId}}" class="icon"></use>
     </g>
   </g>
