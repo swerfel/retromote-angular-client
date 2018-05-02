@@ -50,12 +50,17 @@ export class FirebaseStickiesService extends StickiesService {
   }
 
   private fromFirebaseToLocal(fs: FirebaseStickyNote): StickyNote {
-    if (fs.draggedByClient === this.clientId) {
-      let localSticky = this.stickies.find(s => s.id === fs.key);
-      if (localSticky)
-        return localSticky;
-    }
     let bounds = new Bounds(fs.bounds.x, fs.bounds.y, fs.bounds.width, fs.bounds.height);
+    let localSticky = this.stickies.find(s => s.id === fs.key);
+    if (localSticky) {
+      localSticky.bounds = bounds;
+      localSticky.text = fs.text;
+      if (fs.draggedByClient !== this.clientId) {
+        localSticky.temporaryLocationOffset.dx = fs.temporaryLocationOffset.dx;
+        localSticky.temporaryLocationOffset.dy = fs.temporaryLocationOffset.dy;
+      }
+      return localSticky;
+    }
     let sticky = this.createSticky(fs.key, fs.text, bounds);
     sticky.temporaryLocationOffset.dx = fs.temporaryLocationOffset.dx;
     sticky.temporaryLocationOffset.dy = fs.temporaryLocationOffset.dy;
@@ -88,14 +93,14 @@ export class FirebaseStickiesService extends StickiesService {
 
   protected  onLocalToFront(s: StickyNote){
     this.updateItem(s.id,{
-      order: ++this.highestOrder,
-      draggedByClient: this.clientId
+      order: ++this.highestOrder
    });
   }
 
   protected  onLocalDragged(s: StickyNote){
     this.updateItem(s.id,{
-      temporaryLocationOffset: s.temporaryLocationOffset
+      temporaryLocationOffset: s.temporaryLocationOffset,
+      draggedByClient: this.clientId
     });
   }
 

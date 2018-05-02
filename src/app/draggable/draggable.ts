@@ -4,5 +4,5 @@ export interface Draggable {
   onDragStart();
   onDragLocationChange(change: PositionChange);
   onDragFinish(change: PositionChange);
-
+  onSelect();
 }

@@ -35,6 +35,10 @@ export class StickyNote implements Draggable {
     this.onMovedToFront.next(this);
   }
 
+  onSelect(){
+    this.onMovedToFront.next(this);
+  }
+
   onDragLocationChange(change: PositionChange){
     this.temporaryLocationOffset = change;
     this.onDragged.next(this);

@@ -30,6 +30,7 @@ export class DraggableComponent {
         this.startX = event.screenX;
         this.startY = event.screenY;
     }
+    this.draggableElement.onSelect();
   }
 
   preventDefaultDragAndDrop(event: MouseEvent) {
