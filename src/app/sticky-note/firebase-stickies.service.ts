@@ -43,10 +43,10 @@ export class FirebaseStickiesService extends StickiesService {
 
   private setStickies(firebaseStickies: FirebaseStickyNote[]) {
     let mapped = firebaseStickies.map(s=>this.fromFirebaseToLocal(s));
-    let args: any[] = [0, mapped.length];
+    let args: any[] = [0, this.stickies.length];
     Array.prototype.splice.apply(this.stickies, args.concat(mapped));
-    this.highestOrder = Math.max(...firebaseStickies.map(s=>s.order));
-    console.log("stickies list updated. highest order: "+this.highestOrder);
+    this.highestOrder = Math.max(...firebaseStickies.map(s=>s.order), 1);
+    console.log("stickies list updated. highest order: "+this.highestOrder+", size: "+this.stickies.length);
   }
 
   private fromFirebaseToLocal(fs: FirebaseStickyNote): StickyNote {
